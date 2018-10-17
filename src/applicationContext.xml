@@ -70,18 +70,26 @@
 <!-- action -->
 <bean name="userAction" class="cn.hank.web.action.UserAction" scope="prototype">
 	<property name="userService" ref="userService"></property>
-</bean>	
+</bean>
+<bean name="customerAction" class="cn.hank.web.action.CustomerAction" scope="prototype">
+	<property name="cs" ref="customerService"></property>
+</bean>
 
 <!-- service -->
 <bean name="userService" class="cn.hank.service.impl.UserServiceImpl">
-	<property name="ud" ref="UserDao"></property>
+	<property name="ud" ref="userDao"></property>
+</bean>
+<bean name="customerService" class="cn.hank.service.impl.CustomerServiceImpl">
+	<property name="cd" ref="customerDao"></property>
 </bean>
 
 <!-- dao -->
-<bean name="UserDao" class="cn.hank.dao.impl.UserDaoImpl">
+<bean name="userDao" class="cn.hank.dao.impl.UserDaoImpl">
 	<!-- 注入sessionFactory -->
 	<property name="sessionFactory" ref="sessionFactory"></property>
-
+</bean>
+<bean name="customerDao" class="cn.hank.dao.impl.CustomerDaoImpl">
+	<property name="sessionFactory" ref="sessionFactory"></property>
 </bean>
 
 

@@ -7,6 +7,9 @@
 	<!-- struts2整合spring 配置常量 -->
 	<!-- 将action的创建交给容器 -->
 	<constant name="struts.objectFactory" value="spring"></constant>
+	<!-- Struts开发模式运行 -->
+	<constant name="struts.devMode" value="true"></constant>
+	
 
 	<package name="crm" namespace="/" extends="struts-default">
 		
@@ -18,7 +21,8 @@
 				<!-- 引入自定义拦截器 -->
 				<interceptor-ref name="loginInterceptor">
 					<!-- 定制拦截方法 -->
-					<param name="excludeMethods">login</param>
+					<!-- 不需要拦截 -->
+					<param name="excludeMethods">login,list</param>
 				</interceptor-ref>
 				<!-- 引用默认拦截器栈 -->
 				<interceptor-ref name="defaultStack"></interceptor-ref>
@@ -40,5 +44,11 @@
 			<result name="toHome" type="redirect">/index.htm</result>
 			<result name="error">/login.jsp</result>
 		</action>
+		<action name="CustomerAction_*" class="customerAction" method="{1}">
+			<result name="list">/jsp/customer/list.jsp</result>
+		</action>
+		
+		
+		
 	</package>
 </struts>

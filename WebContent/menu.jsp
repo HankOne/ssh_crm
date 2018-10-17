@@ -8,7 +8,6 @@
 <STYLE type=text/css>
 BODY {
 	PADDING-RIGHT: 0px;
-	PADDING-LEFT: 0px;
 	PADDING-BOTTOM: 0px;
 	MARGIN: 0px;
 	PADDING-TOP: 0px;
