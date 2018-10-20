@@ -25,12 +25,18 @@ public class CustomerServiceImpl implements CustomerService {
 		//查询list分页数据
 		List<Customer> list=cd.getPageList(dc,pd.getStart(),pd.getPageSize());
 		pd.setList(list);
-		
 		return pd;
 	}
 
 	public void setCd(CustomerDao cd) {
 		this.cd = cd;
+	}
+
+	@Override
+	public void save(Customer customer) {
+		//
+		cd.saveOrUpdate(customer);
+		
 	}
 	
 	

@@ -16,7 +16,6 @@ public class PageBean {
 	private List list;
 
 	public PageBean(Integer currentPage, Integer totalCount, Integer pageSize) {
-		System.out.println("初始化pageBean");
 
 		this.currentPage = currentPage;
 		this.totalCount = totalCount;
@@ -36,14 +35,9 @@ public class PageBean {
 		if (this.currentPage < 1) {
 			this.currentPage = 1;
 		}
-		System.out.println("赋值2");	
-		System.out.println(this.currentPage);
-		System.out.println(this.totalPage);
 		if (this.currentPage > this.totalPage) {
 			this.currentPage = this.totalPage;
 		}
-
-		System.out.println("赋值202");
 
 	}
 

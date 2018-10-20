@@ -15,8 +15,6 @@ public class UserAction extends ActionSupport implements ModelDriven<User> {
 
 	public String login() throws Exception {
 
-		System.out.println(user);
-
 		User u = userService.getUserByCodePassword(user);
 		ActionContext.getContext().getSession().put("user", u);
 		// 重定向到主页

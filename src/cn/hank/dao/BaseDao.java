@@ -5,7 +5,11 @@ import java.util.List;
 
 import org.hibernate.criterion.DetachedCriteria;
 
+import cn.hank.domain.Customer;
+
 public interface BaseDao<T> {
+	//增或修改
+	void saveOrUpdate(T t);
 	//增
 	void save(T t);
 	//删

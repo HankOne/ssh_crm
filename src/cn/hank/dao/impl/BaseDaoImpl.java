@@ -10,6 +10,7 @@ import org.hibernate.criterion.Projections;
 import org.springframework.orm.hibernate5.support.HibernateDaoSupport;
 
 import cn.hank.dao.BaseDao;
+import cn.hank.domain.Customer;
 
 public class BaseDaoImpl<T> extends HibernateDaoSupport implements BaseDao<T> {
 
@@ -69,6 +70,11 @@ public class BaseDaoImpl<T> extends HibernateDaoSupport implements BaseDao<T> {
 		//获得分页数据
 		List<T> list = (List<T>) getHibernateTemplate().findByCriteria(dc, start, pageSize);
 		return list;
+	}
+
+	@Override
+	public void saveOrUpdate(T t) {
+		getHibernateTemplate().saveOrUpdate(t);
 	}
 
 }
