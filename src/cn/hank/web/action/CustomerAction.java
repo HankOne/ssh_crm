@@ -57,10 +57,18 @@ public class CustomerAction extends ActionSupport implements ModelDriven<Custome
 			// 将文件保存到指定位置
 			photo.renameTo(new File("D:/JAVAEE_Code/ssh_crm/upload/" + photoFileName + ".jpg"));
 		}
-
 		cs.save(customer);
 		// 重定向到客户列表
 		return "toList";
+	}
+	
+	
+	public String toEdit() throws Exception {
+		//调用Service根据id获得用户
+		Customer c=cs.getById(customer.getCust_id());
+		//将客户放置到request域，并转发到编辑页面
+		ActionContext.getContext().put("customer", c);
+		return "edit";
 	}
 
 	public void setCs(CustomerService cs) {
