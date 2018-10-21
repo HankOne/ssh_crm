@@ -20,8 +20,6 @@ public class CustomerServiceImpl implements CustomerService {
 		System.out.println("记录数为"+totalCount);
 		//创建PageBean对象
 		PageBean pd=new PageBean(currentPage, totalCount, pageSize);
-		System.out.println(pd);
-		System.out.println("测试");
 		//查询list分页数据
 		List<Customer> list=cd.getPageList(dc,pd.getStart(),pd.getPageSize());
 		pd.setList(list);
