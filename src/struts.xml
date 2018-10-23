@@ -56,6 +56,9 @@
 		</action>
 		<action name="BaseDictAction" class="baseDictAction" method="execute">
 		</action>
+		<action name="LinkManAction_*" class="linkManAction" method="{1}">
+			<result name="toList">/index.htm</result>
+		</action>
 		
 		
 		

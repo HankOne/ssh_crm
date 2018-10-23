@@ -15,7 +15,7 @@
 </HEAD>
 <BODY>
 	<FORM id=form1 name=form1
-		action="${pageContext.request.contextPath }/AddLinkManServlet"
+		action="${pageContext.request.contextPath }/LinkManAction_add"
 		method=post>
 		
 
@@ -49,7 +49,7 @@
 							<tr>
 								<td>所属客户：</td>
 								<td colspan="3">
-									<input type="hidden" name="cust_id" style="WIDTH: 180px" id="cust_id"/>
+									<input type="hidden" name="customer.cust_id" style="WIDTH: 180px" id="cust_id" />
 									<input type="text" style="WIDTH: 180px" id="cust_name" />
 									
 									<input type="button" value="选择客户" onclick="window.open('${pageContext.request.contextPath}/CustomerAction_list?select=true','','width=600,height=300')" >

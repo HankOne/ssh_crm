@@ -78,6 +78,10 @@
 <bean name="baseDictAction" class="cn.hank.web.action.BaseDictAction"  scope="prototype">
 	<property name="baseDictService" ref="baseDictService"></property>
 </bean>
+<bean name="linkManAction" class="cn.hank.web.action.LinkManAction"  scope="prototype">
+	<property name="lms" ref="linkManService"></property>
+</bean>
+
 
 <!-- service -->
 <bean name="userService" class="cn.hank.service.impl.UserServiceImpl">
@@ -89,6 +93,9 @@
 <bean name="baseDictService" class="cn.hank.service.impl.BaseDictServiceImpl">
 	<property name="bdd" ref="baseDictDao"></property>
 </bean>
+<bean name="linkManService" class="cn.hank.service.impl.LinkManServiceImpl">
+	<property name="lmd" ref="linkManDao"></property>
+</bean>
 
 <!-- dao -->
 <bean name="userDao" class="cn.hank.dao.impl.UserDaoImpl">
@@ -99,6 +106,9 @@
 	<property name="sessionFactory" ref="sessionFactory"></property>
 </bean>
 <bean name="baseDictDao" class="cn.hank.dao.impl.BaseDictDaoImpl">
+	<property name="sessionFactory" ref="sessionFactory"></property>
+</bean>
+<bean name="linkManDao" class="cn.hank.dao.impl.LinkManDaoImpl">
 	<property name="sessionFactory" ref="sessionFactory"></property>
 </bean>
 
