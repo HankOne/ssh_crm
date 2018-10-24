@@ -1,6 +1,6 @@
 ﻿<%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib  prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib  prefix="s" uri="/struts-tags" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -30,8 +30,6 @@
 	
 	function selectCustomer(cust_id,cust_name){
 		
-		alert(cust_id);
-		alert(cust_name);
 		//获得添加页面的额Windows对象
 		var win=window.opener;
 		//获得添加页面的document页面
@@ -86,11 +84,11 @@
 											
 											<!-- 设置隐藏域 -->
 											<!-- 当前页码 -->
-											<input type="hidden" name="currentPage" id="currentPageInput" value="<s:property value='#pageBean.currentPage' />" />
+											<input type="hidden" name="currentPage" id="currentPageInput" value="<s:property value="#pageBean.currentPage" />" />
 											<!-- 每页显示条数 -->
-											<input type="hidden" name="pageSize" id="pageSizeInput" value="<s:property value='#pageBean.pageSize' />" />
+											<input type="hidden" name="pageSize" id="pageSizeInput" value="<s:property value="#pageBean.pageSize" />" />
 											<!-- 放置是否需要选择的标记参数 -->
-											<input type="text" name="select" value='<s:property value='#parameters.select' />' >
+											<input type="hidden" name="select" id="select" value="<s:property value="#parameters.select" />" >
 											
 										<TABLE cellSpacing=0 cellPadding=2 border=0>
 											<TBODY>
@@ -124,6 +122,8 @@
 													<TD>手机</TD>
 													<TD>操作</TD>
 												</TR>
+												
+												
 												<s:iterator value="#pageBean.list" var="cust" >
 												<TR 		
 													style="FONT-WEIGHT: normal; FONT-STYLE: normal; BACKGROUND-COLOR: white; TEXT-DECORATION: none">
@@ -147,29 +147,48 @@
 													</TD>
 													<TD>
 													
-													<s:if test="#parmeters.select==null">
+													 <%-- <s:if test="#parameters.select==null">
+													<s:if test="$('#select').val()==null">
+														
 														<a href="${pageContext.request.contextPath }/CustomerAction_toEdit?cust_id=<s:property value="#cust.cust_id" />">修改</a>
 														&nbsp;&nbsp;
 														<a href="${pageContext.request.contextPath }/customerServlet?method=delete&custId=${customer.cust_id}">删除</a>
 													</s:if>
 													<s:else>
 														<input type="button" value="选择" onclick="selectCustomer(<s:property value="#cust.cust_id" />,'<s:property value="#cust.cust_name" />')" />
+													</s:else> --%>
+													
+													<s:if test="#parameters.select==null">
+														<script type="text/javascript">
+															/* alert("<s:property value="#parameters.select==null?'shi':'bushi'" />"); */
+														</script>
+														<a href="${pageContext.request.contextPath }/CustomerAction_toEdit?cust_id=<s:property value="#cust.cust_id" />">修改</a>
+														&nbsp;&nbsp;
+														<a href="${pageContext.request.contextPath }/customerServlet?method=delete&custId=${customer.cust_id}">删除</a>
+													</s:if>
+													<s:else>
+														<script type="text/javascript">
+																var i=<s:property value="#parameters.select" />;
+																alert(i.length);
+															 /*  alert("<s:property value="#parameters.select==''?'shi':'bushi'" />"); */
+															 
+															/* alert("<s:property value="#parameters.select" />"); */
+														</script>
+														<input type="button" value="选择" onclick="selectCustomer(<s:property value="#cust.cust_id" />,'<s:property value="#cust.cust_name" />')" />
 													</s:else>
-													
-													
-													
 													</TD>
+													
 												</TR>
 												</s:iterator>
 											</TBODY>
 										</TABLE>
+										<s:debug></s:debug>
 									</TD>
 								</TR>
 								
 								<TR>
 									<TD><SPAN id=pagelink>
-											<DIV
-												style="LINE-HEIGHT: 20px; HEIGHT: 20px; TEXT-ALIGN: right">
+											<DIV style="LINE-HEIGHT: 20px; HEIGHT: 20px; TEXT-ALIGN: right">
 												共[<B><s:property value="#pageBean.totalCount"/></B>]条记录,[<B><s:property value="#pageBean.totalPage"/></B>]页
 												,每页显示
 												<select name="pageSize" onchange="changePageSize($('#pageSizeSelect option:selected').val())" id="pageSizeSelect">

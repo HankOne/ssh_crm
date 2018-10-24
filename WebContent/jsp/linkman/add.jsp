@@ -4,7 +4,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<TITLE>添加联系人</TITLE> 
+<TITLE><s:property value="#linkMan==null?'添加':'修改'" />联系人</TITLE> 
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <LINK href="${pageContext.request.contextPath }/css/Style.css" type=text/css rel=stylesheet>
 <LINK href="${pageContext.request.contextPath }/css/Manage.css" type=text/css
@@ -16,7 +16,7 @@
 <BODY>
 	<FORM id=form1 name=form1
 		action="${pageContext.request.contextPath }/LinkManAction_add"
-		method=post>
+		method="post">
 		
 
 		<TABLE cellSpacing=0 cellPadding=0 width="98%" border=0>
@@ -51,8 +51,11 @@
 								<td colspan="3">
 									<input type="hidden" name="customer.cust_id" style="WIDTH: 180px" id="cust_id" />
 									<input type="text" style="WIDTH: 180px" id="cust_name" />
-									
 									<input type="button" value="选择客户" onclick="window.open('${pageContext.request.contextPath}/CustomerAction_list?select=true','','width=600,height=300')" >
+									
+									<!--  <input type="hidden" name="customer.cust_id" style="WIDTH: 180px" id="cust_id" value="<s:property value="#linkMan.customer.cust_id" />" />
+								<input type="text"  style="WIDTH: 180px" id="cust_name" value="<s:property value="#linkMan.customer.cust_name" />"/>
+									<input type="button" value="选择客户" onclick="window.open('${pageContext.request.contextPath}/CustomerAction_list?select=true','','width=600,height=300')" />-->
 								
 								</td>
 							</tr>

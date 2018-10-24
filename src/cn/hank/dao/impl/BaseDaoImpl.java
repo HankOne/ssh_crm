@@ -51,7 +51,6 @@ public class BaseDaoImpl<T> extends HibernateDaoSupport implements BaseDao<T> {
 
 	@Override
 	public Integer getTotalCount(DetachedCriteria dc) {
-		System.out.println("查询总记录数");
 		// 设置查询的聚合函数
 		dc.setProjection(Projections.rowCount());
 		List<Long> list = (List<Long>) getHibernateTemplate().findByCriteria(dc);
