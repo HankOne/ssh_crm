@@ -4,6 +4,9 @@
 	"http://struts.apache.org/dtds/struts-2.3.dtd">
 <struts>
 	
+	<!-- i18n:国际化 ，解决post提交乱码 -->
+	<constant name="struts.i18n.encoding" value="UTF-8"></constant>
+	
 	<!-- struts2整合spring 配置常量 -->
 	<!-- 将action的创建交给容器 -->
 	<constant name="struts.objectFactory" value="spring"></constant>
@@ -21,8 +24,9 @@
 				<!-- 引入自定义拦截器 -->
 				<interceptor-ref name="loginInterceptor">
 					<!-- 定制拦截方法 -->
+					<!-- <param name="includeMethods">list,add</param> -->
 					<!-- 不需要拦截 -->
-					<param name="excludeMethods">login,list</param>
+					<param name="excludeMethods">login</param>
 				</interceptor-ref>
 				<!-- 引用默认拦截器栈 -->
 				<interceptor-ref name="defaultStack"></interceptor-ref>

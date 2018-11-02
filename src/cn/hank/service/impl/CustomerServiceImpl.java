@@ -32,8 +32,8 @@ public class CustomerServiceImpl implements CustomerService {
 
 	@Override
 	public void save(Customer customer) {
-		//
 		cd.saveOrUpdate(customer);
+		
 		
 	}
 

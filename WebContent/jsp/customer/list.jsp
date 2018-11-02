@@ -29,7 +29,6 @@
 	}
 	
 	function selectCustomer(cust_id,cust_name){
-		
 		//获得添加页面的额Windows对象
 		var win=window.opener;
 		//获得添加页面的document页面
@@ -40,7 +39,7 @@
 		//关闭当前窗口
 		window.close();		
 	}
-	
+
 	
 </SCRIPT>
 
@@ -87,8 +86,18 @@
 											<input type="hidden" name="currentPage" id="currentPageInput" value="<s:property value="#pageBean.currentPage" />" />
 											<!-- 每页显示条数 -->
 											<input type="hidden" name="pageSize" id="pageSizeInput" value="<s:property value="#pageBean.pageSize" />" />
-											<!-- 放置是否需要选择的标记参数 -->
-											<input type="hidden" name="select" id="select" value="<s:property value="#parameters.select" />" >
+											<%-- <input type="hidden" name="select" id="select" value="<s:property value="#parameters.select" />" > --%>
+											
+											<!-- 放置是否需要选择的标记参数 --> 
+											<s:if test="#parameters.select==null">
+											
+											</s:if>
+											<s:else>
+												<input type="hidden" name="select" id="select" value="<s:property value="#parameters.select" />" >
+											</s:else>
+											<%-- <script type="text/javascript">
+												 alert("<s:property value="#parameters.select==''?'空串':'不是'"/>"); 
+											</script> --%>
 											
 										<TABLE cellSpacing=0 cellPadding=2 border=0>
 											<TBODY>
@@ -122,6 +131,7 @@
 													<TD>手机</TD>
 													<TD>操作</TD>
 												</TR>
+												
 												
 												
 												<s:iterator value="#pageBean.list" var="cust" >
@@ -158,22 +168,13 @@
 														<input type="button" value="选择" onclick="selectCustomer(<s:property value="#cust.cust_id" />,'<s:property value="#cust.cust_name" />')" />
 													</s:else> --%>
 													
+													
 													<s:if test="#parameters.select==null">
-														<script type="text/javascript">
-															/* alert("<s:property value="#parameters.select==null?'shi':'bushi'" />"); */
-														</script>
 														<a href="${pageContext.request.contextPath }/CustomerAction_toEdit?cust_id=<s:property value="#cust.cust_id" />">修改</a>
 														&nbsp;&nbsp;
 														<a href="${pageContext.request.contextPath }/customerServlet?method=delete&custId=${customer.cust_id}">删除</a>
 													</s:if>
 													<s:else>
-														<script type="text/javascript">
-																var i=<s:property value="#parameters.select" />;
-																alert(i.length);
-															 /*  alert("<s:property value="#parameters.select==''?'shi':'bushi'" />"); */
-															 
-															/* alert("<s:property value="#parameters.select" />"); */
-														</script>
 														<input type="button" value="选择" onclick="selectCustomer(<s:property value="#cust.cust_id" />,'<s:property value="#cust.cust_name" />')" />
 													</s:else>
 													</TD>
@@ -182,7 +183,6 @@
 												</s:iterator>
 											</TBODY>
 										</TABLE>
-										<s:debug></s:debug>
 									</TD>
 								</TR>
 								
