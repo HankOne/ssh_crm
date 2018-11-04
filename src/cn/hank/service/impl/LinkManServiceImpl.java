@@ -14,8 +14,8 @@ public class LinkManServiceImpl implements LinkManService {
 	private LinkManDao lmd;
 	
 	@Override
-	public void save(LinkMan linkMan) {
-		lmd.save(linkMan);
+	public void saveOrUpdate(LinkMan linkMan) {
+		lmd.saveOrUpdate(linkMan);
 	}
 
 	public void setLmd(LinkManDao lmd) {
@@ -29,7 +29,6 @@ public class LinkManServiceImpl implements LinkManService {
 		//创建PageBean
 		PageBean pb=new PageBean(currentPage,totalCount,pageSize);
 		//调用dao查询分页数据列表
-		System.out.println(pb);
 		List<LinkMan> list=lmd.getPageList(dc, pb.getStart(), pb.getPageSize());
 		pb.setList(list);
 		return pb;
@@ -37,8 +36,12 @@ public class LinkManServiceImpl implements LinkManService {
 
 	@Override
 	public LinkMan getById(Long cust_id) {
-		lmd.getById(cust_id);
-		return null;
+		return lmd.getById(cust_id);
+	}
+
+	@Override
+	public void delete(Long lkm_id) {
+		lmd.delete(lkm_id);
 	}
 
 	

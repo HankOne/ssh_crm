@@ -20,7 +20,6 @@ public class PageBean {
 		this.currentPage = currentPage;
 		this.totalCount = totalCount;
 		this.pageSize = pageSize;
-
 		
 		if (this.currentPage == null) {
 			this.currentPage = 1;

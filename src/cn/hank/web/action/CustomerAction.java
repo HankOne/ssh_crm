@@ -70,6 +70,11 @@ public class CustomerAction extends ActionSupport implements ModelDriven<Custome
 		ActionContext.getContext().put("customer", c);
 		return "edit";
 	}
+	
+	public String delete(){
+		cs.delete(customer.getCust_id());
+		return "toList";
+	}
 
 	public void setCs(CustomerService cs) {
 		this.cs = cs;

@@ -7,10 +7,12 @@ import cn.hank.utils.PageBean;
 
 public interface LinkManService {
 
-	void save(LinkMan linkMan);
+	void saveOrUpdate(LinkMan linkMan);
 
 	PageBean getPageaBean(DetachedCriteria dc, Integer currentPage, Integer pageSize);
 
 	LinkMan getById(Long cust_id);
+
+	void delete(Long lkm_id);
 
 }

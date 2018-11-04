@@ -12,5 +12,6 @@ public interface CustomerService {
 	void save(Customer customer);
 	//根据id获得客户对象
 	Customer getById(Long cust_id);
+	void delete(Long cust_id);
 
 }

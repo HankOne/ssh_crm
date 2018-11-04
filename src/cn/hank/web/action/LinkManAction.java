@@ -20,6 +20,11 @@ public class LinkManAction extends ActionSupport implements ModelDriven<LinkMan>
 
 	private Integer currentPage;
 	private Integer pageSize;
+	
+	public String delete() {
+		lms.delete(linkMan.getLkm_id());
+		return "toList";
+	}
 
 	public String list() throws Exception {
 		// 封装离线查询对象
@@ -39,18 +44,16 @@ public class LinkManAction extends ActionSupport implements ModelDriven<LinkMan>
 	}
 
 	public String toEdit() throws Exception {
-		System.out.println("toEdit");
 		//1.查询lkm_id
 		LinkMan lm=lms.getById(linkMan.getLkm_id());
 		//2.将查询到的linkMan放到request域中,转发到添加页面
-//		System.out.println(lm.getCust_id());
 		ActionContext.getContext().put("linkMan", lm);
 		return "add";
 	}
 	
 	public String add() throws Exception {
-
-		lms.save(linkMan);
+		
+		lms.saveOrUpdate(linkMan);
 		return "toList";
 	}
 

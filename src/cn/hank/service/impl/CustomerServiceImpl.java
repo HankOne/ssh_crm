@@ -17,7 +17,6 @@ public class CustomerServiceImpl implements CustomerService {
 	public PageBean getPageBean(DetachedCriteria dc, Integer currentPage, Integer pageSize) {
 		//查询总记录数
 		Integer totalCount=cd.getTotalCount(dc);
-		System.out.println("记录数为"+totalCount);
 		//创建PageBean对象
 		PageBean pd=new PageBean(currentPage, totalCount, pageSize);
 		//查询list分页数据
@@ -40,6 +39,11 @@ public class CustomerServiceImpl implements CustomerService {
 	@Override
 	public Customer getById(Long cust_id) {
 		return cd.getById(cust_id);
+	}
+
+	@Override
+	public void delete(Long cust_id) {
+		 cd.delete(cust_id);
 	}
 	
 	
